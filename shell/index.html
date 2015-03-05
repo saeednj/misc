@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta name="author" content="Saeed Nejati" />
+<title>Saeed's Shell</title>
+<link rel="stylesheet" type="text/css" href="style.css" id="iStyle">
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	var CmdID = 0;
+	function setFocus() { var obj = $("#cmd" + CmdID); if( obj ) obj.focus(); }
+	function nextCommandLine()
+	{
+		CmdID++;
+		var id = "cmd" + CmdID;
+		var tid = "table-data-" + CmdID;
+
+		$("#Shell").append(
+                "<table><tr><td class='inputInfo'>"
+                + "[saeed@webshell ~]$ </td><td class='inputCmd' id='" + tid + "'>"
+                + "<input type='text' tabindex=0 id='" + id + "'></input>"
+                + "</td></tr></table>");
+
+        $("#" + id).keyup(function(e){
+                if ( e.which == 13 ) runCommand();
+            });
+
+		setFocus();
+	}
+	
+	function runCommand()
+    {
+        var id = "#cmd" + CmdID;
+        var tid = "#table-data-" + CmdID;
+        var cmd = $(id).val().trim();
+        if( cmd == "clear" )
+        {
+            $("#Shell").html("");
+            nextCommandLine();
+            return true;
+        }
+        $.get("process.php", { command : cmd })
+            .done(function(data) {
+                    $("#Shell").append( data + "<br/>" );
+                    nextCommandLine();
+            });
+        $(tid).html(cmd);
+        return true;
+    }
+</script>
+<body onfocus="setFocus();">
+<p>Enter 'help' for a list of available commands..</p>
+<div id="Shell">
+<script> nextCommandLine(); </script>
+</div>
+</body>
+</html>

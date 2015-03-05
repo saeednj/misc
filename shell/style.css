@@ -1,0 +1,36 @@
+*:focus {
+    outline-style : none;
+}
+
+table {
+    height : 25px;
+    width : 80%;
+    border : 0px;
+    border-spacing : 0px;
+    border-collapse: separate;
+    white-space : nowrap;
+}
+
+td {
+    padding : 0px;
+}
+
+.inputInfo {
+    width : 180px;
+}
+
+input {
+	border-width : 0px;
+    width : 100%;
+	background-color : #FFFFCC;
+	color : #000000;
+	font-family : "Courier New", Courier, monospace;
+	font-size : 11pt;
+}
+
+body {
+	color : #000000;
+	background-color : #FFFFCC;
+	font-family : "Courier New", Courier, monospace;
+	font-size : 11pt;
+}
