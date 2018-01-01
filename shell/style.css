@@ -15,6 +15,10 @@ td {
     padding : 0px;
 }
 
+pre {
+    font-size : 10pt;
+}
+
 .inputInfo {
     width : 180px;
 }
