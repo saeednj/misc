@@ -1,0 +1,26 @@
+[Breakpoint 0]
+Enabled=true
+File=int.c
+Line=12
+Temporary=false
+
+[General]
+DebuggerCmdStr=
+DriverName=GDB
+FileVersion=1
+OptionsSelected=
+ProgramArgs=a.bf
+TTYLevel=7
+WorkingDirectory=
+
+[Memory]
+ColumnWidths=80,0
+NumExprs=0
+
+[Watches]
+Expr0=code
+Expr1=a
+Expr2=a[0]
+Expr3=a[1]
+Expr4=p
+Expr5=c
