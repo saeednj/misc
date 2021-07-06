@@ -49,6 +49,9 @@ class MyHTMLParser(HTMLParser):
         print(f"h-index: {self.h_index}")
         print(f"i10-index: {self.i10_index}")
 
+    def get_stat(self):
+        return (self.citations, self.h_index, self.i10_index)
+
 def get_url(user):
     return f"https://scholar.google.com/citations?hl=en&user={user}"
 
@@ -58,11 +61,10 @@ parser = MyHTMLParser()
 with open("users.json", "r") as f:
     users = json.load(f)
 
+print("name, citations, h_index, i10_index")
 for name, user_id in users.items():
     url = get_url(user_id)
     content = urllib.request.urlopen(url).read()
     parser.feed(content.decode("iso-8859-1"))
-    print(name)
-    print("---")
-    parser.print_stat()
-    print("")
+    citations, h_index, i10_index = parser.get_stat()
+    print(f"{name}, {citations}, {h_index}, {i10_index}")
