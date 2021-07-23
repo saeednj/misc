@@ -1,4 +1,4 @@
 misc
 ====
 
-Small scripts, projects and snippets.
+Collection of small scripts/codes that didn't have a better home.
